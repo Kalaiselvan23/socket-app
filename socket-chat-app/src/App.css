@@ -1,0 +1,15 @@
+.outer-div
+{
+  display: grid;
+  padding:1rem 1rem 0 1rem;
+  grid-template-columns:40% auto;
+  grid-template-rows:10% auto;
+  gap:1rem;
+  height:100vh;
+}
+.chat-bubble
+{
+  border-radius:1rem 1rem 1rem 0;
+  width:fit-content;
+  font-weight:500;
+}
