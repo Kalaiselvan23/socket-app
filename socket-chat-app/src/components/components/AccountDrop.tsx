@@ -6,9 +6,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { UserContext } from "@/contexts/UserContext";
+import { UserContextType } from "@/types";
+import { useContext } from "react";
 import { FaCircleUser } from "react-icons/fa6";
-import ProfileDialog from "./ProfileDialog";
 const AccountDrop = () => {
+  const {User,setUser}=useContext<UserContextType>(UserContext)
+  const handleClick=()=>{
+    setUser({
+      isLogin:false,
+      username:"",
+    })
+
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -17,10 +27,10 @@ const AccountDrop = () => {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem >
           Profile
         </DropdownMenuItem>
-        <DropdownMenuItem>Logout</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleClick}>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
 

@@ -1,9 +1,9 @@
 export type UserContextType={
-  userData:UserDataType,
-  setUser: React.Dispatch<React.SetStateAction<UserContextType | undefined>>
+  User:UserDataType,
+  setUser:React.Dispatch<React.SetStateAction<UserDataType>>
 }
 
 export type UserDataType={
     username:string,
-    isAdmin:boolean,
+    isLogin:boolean,
 }

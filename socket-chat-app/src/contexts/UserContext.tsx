@@ -1,12 +1,17 @@
-import React, { ReactNode, createContext, useState } from "react";
-import { UserContextType,UserDataType} from "@/types";
-const userContext=createContext<UserContextType|null>(null);
-
-
+import {ReactNode, createContext} from 'react';
+import { UserDataType } from '../types';
+import { useState } from 'react';
+import { UserContextType } from '../types';
+export const UserContext = createContext<UserContextType>({
+    User: { username: "", isLogin: false },
+    setUser: () => {} 
+  });
 export const UserContextProvider=({children}:{children:ReactNode})=>{
-    const [userData,setUser]=React.useState<UserDataType| null>(null);
-    return <userContext.Provider value={{userData,setUser}}>
+    const [User, setUser] = useState<UserDataType>({
+        username:"",
+        isLogin:false,
+    });
+    return <UserContext.Provider value={{User,setUser}}>
         {children}
-    </userContext.Provider>
-
+    </UserContext.Provider>
 }
