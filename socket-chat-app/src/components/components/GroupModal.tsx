@@ -23,24 +23,24 @@ type Inputs = {
 
 const GroupModal = () => {
   const { register, handleSubmit } = useForm<Inputs>();
+  const [status,setStatus]=React.useState<boolean>(false);
   const { selectedUsers } = useSelectedUsers(); // Get the selected users from the context
   const createMutation = useMutation({
-    mutationFn: () => {
+    mutationFn: (data) => {
       return Api.post("/group/",{
-        selectedUsers:selectedUsers,
         ...data
-      }); // Pass selectedUsers to the API call
+      });
     },
+    onSuccess:()=>{
+      setStatus(true)
+      createMutation.reset();
+    }
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    // const res = await createMutation.mutateAsync({...data});
-    console.log(data);
-    const res=await createMutation.mutateAsync()
+    const res=await createMutation.mutate({...data,selectedUsers})
   };
-
   return (
-    <SelectedUserProvider>
       <Dialog>
         <DialogTrigger>
           <Button className="bg-gray-400 hover-bg-gray-300 text-xl font-semibold flex gap-2">
@@ -48,11 +48,11 @@ const GroupModal = () => {
             <IoMdAdd />
           </Button>
         </DialogTrigger>
-        <DialogContent className="h-60">
+        <DialogContent className="h-fit">
           <DialogHeader>
             <DialogTitle>Create Group</DialogTitle>
-            <DialogDescription>
-              <form
+           {<DialogDescription className="flex justify-center items-center">
+       <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col justify-between gap-5"
               >
@@ -60,11 +60,10 @@ const GroupModal = () => {
                 <MemberDropdown />
                 <Button type="submit">Create Group</Button>
               </form>
-            </DialogDescription>
+            </DialogDescription>}
           </DialogHeader>
         </DialogContent>
       </Dialog>
-    </SelectedUserProvider>
   );
 };
 

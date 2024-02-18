@@ -33,16 +33,13 @@ export default function MemberDropDown() {
         return [...prevSelectedValues, value];
       }
     });
-  };
+  };            
 
   // Update the selected users in the context whenever the selection changes
   React.useEffect(() => {
     setSelectedUsers(selectedValues);
   }, [selectedValues, setSelectedUsers]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -67,7 +64,7 @@ export default function MemberDropDown() {
           <CommandInput placeholder="Search user..." className="h-9" />
           <CommandEmpty>No users found.</CommandEmpty>
           <CommandGroup>
-            {users && users.map((user) => (
+            {users?.map((user) => (
               <CommandItem
                 key={user._id}
                 value={user._id}

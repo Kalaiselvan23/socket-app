@@ -5,5 +5,6 @@ export type UserContextType={
 
 export type UserDataType={
     username:string,
+    userId:string,
     isLogin:boolean,
 }

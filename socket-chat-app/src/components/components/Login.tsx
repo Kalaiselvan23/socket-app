@@ -35,6 +35,7 @@ const Login = () => {
             console.log(data.data);
             setUser({
                 isLogin:true,
+                userId:data.data._id,
                 username:data.data.username,
             })
             console.log(User);
