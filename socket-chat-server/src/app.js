@@ -18,7 +18,7 @@ app.use(cors());
 
 //routes
 app.use("/api/auth",authRoutes);
-app.use("/api/group",groupRoutes);
+app.use("/api/groups",groupRoutes);
 app.use("/api/users",userRoutes)
 
 mongoose.connect(process.env.MONGO_URL)
