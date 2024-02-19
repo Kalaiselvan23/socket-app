@@ -27,7 +27,7 @@ const GroupModal = () => {
   const { selectedUsers } = useSelectedUsers(); // Get the selected users from the context
   const createMutation = useMutation({
     mutationFn: (data) => {
-      return Api.post("/group/",{
+      return Api.post("/groups/",{
         ...data
       });
     },
