@@ -4,6 +4,7 @@ const getGroups=async(req,res)=>{
     try
     {
         const data=await Group.find({members:{$in:[req.query.id]}});
+        console.log(req.query);
         res.status(200).json({
             groups:[...data]
         })
