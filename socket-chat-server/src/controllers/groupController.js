@@ -15,11 +15,11 @@ const getGroups=async(req,res)=>{
     }
 }
 const getGroupById=async(req,res)=>{
-
+    const {userId}=req.params.id;
+    console.log(userId);
 }
 const createGroup=async(req,res)=>{
     try{
-        console.log(req.body)
         const newGroup=new Group({
         members:[...req.body.selectedUsers],
             chatName:req.body.chatName,
@@ -35,9 +35,9 @@ const createGroup=async(req,res)=>{
 
 }
 const deleteGroup=async(req,res)=>{
-
+    
 }
 const updateGroup=async(req,res)=>{
-
+    
 }
 module.exports={getGroups,getGroupById,createGroup,updateGroup,deleteGroup}

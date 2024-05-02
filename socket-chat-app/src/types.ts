@@ -8,3 +8,11 @@ export type UserDataType={
     userId:string,
     isLogin:boolean,
 }
+
+export type messageType={
+  senderId:string,
+  text:string,
+  chatId:string,
+  createdAt:string,
+  messageId:string,
+}

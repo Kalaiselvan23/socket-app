@@ -9,7 +9,20 @@ import {
 import { FaEye } from "react-icons/fa";
 import { Button } from '../ui/button';
 import { Input } from "../ui/input";
+import Api from "@/Api";
+import { useMutation } from "react-query";
 const MembersDialog = () => {
+  const LeaveGroupMutation=useMutation({
+    mutationFn:(data)=>{
+      Api.delete(`/group?chatId=${chatId}`,{
+
+      })
+    }
+  })
+  const handleDelete=(event)=>{
+    event.preventDefault();
+    
+  }
   return (
     <div>
       <Dialog>
@@ -32,7 +45,7 @@ const MembersDialog = () => {
                   </Button>
                 </div>
                 <Input className="my-2" placeholder="Add user to group" />
-                <Button className="bg-red-500 ali hover:bg-red-400">Leave group</Button>
+                <Button className="bg-red-500 ali hover:bg-red-400" onClick={handleDelete}>Leave group</Button>
               </div>
             </DialogDescription>
           </DialogHeader>

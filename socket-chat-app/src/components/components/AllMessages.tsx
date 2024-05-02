@@ -15,6 +15,7 @@ const AllMessages = () => {
     console.log(res.data)
     return res.data.groups
   })
+  console.log(groups);
   return (
     <SelectedUserProvider>
       <div className="bg-white p-2 rounded-lg">
